@@ -34,6 +34,7 @@ from miners.ppl_model import PPLModel
 from transformers.utils import logging as hf_logging
 
 from miners.deberta_classifier import DebertaClassifier
+from miners.hf_classifier import HfClassifier
 
 hf_logging.set_verbosity(40)
 
@@ -53,6 +54,11 @@ class Miner(BaseMinerNeuron):
         if self.config.neuron.model_type == 'ppl':
             self.model = PPLModel(device=self.device)
             self.model.load_pretrained(self.config.neuron.ppl_model_path)
+        elif self.config.neuron.model_type == 'hf':
+            self.model = HfClassifier(
+                model_dir=self.config.neuron.hf_model_dir,
+                device=self.device,
+            )
         else:
             self.model = DebertaClassifier(foundation_model_path=self.config.neuron.deberta_foundation_model_path,
                                            model_path=self.config.neuron.deberta_model_path,

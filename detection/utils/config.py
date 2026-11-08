@@ -226,8 +226,15 @@ def add_args(cls, parser):
         parser.add_argument(
             "--neuron.model_type",
             type=str,
-            help="Which model use, on of ['deberta', 'ppl']",
+            help="Which model use, one of ['deberta', 'ppl', 'hf']",
             default="deberta",
+        )
+
+        parser.add_argument(
+            "--neuron.hf_model_dir",
+            type=str,
+            help="Path to HF sequence-classification checkpoint when model_type=hf",
+            default="miner_prep/checkpoints/clf-v1",
         )
 
 
