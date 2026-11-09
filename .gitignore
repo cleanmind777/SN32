@@ -11,6 +11,15 @@ wandb/*
 models/
 models/*
 
+# Hugging Face generator cache. Re-download TinyLlama, Phi-2, and Mistral on the next machine.
+miner_prep/hf-cache/
+
+# Checkpoint weights are over GitHub's 100 MB git limit. They are release assets.
+# See STATUS.md.
+miner_prep/checkpoints/**/model.safetensors
+miner_prep/checkpoints/**/optimizer.pt
+miner_prep/checkpoints/**/pytorch_model.bin
+
 nohup.out
 
 # Byte-compiled / optimized / DLL files
